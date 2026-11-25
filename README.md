@@ -1,8 +1,8 @@
 # One-Line Slogan for a Solana Wallet Agent
 
 [![make.fun](https://make.fun/badge/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e.svg)](https://make.fun/c/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e)
-[![Rank](https://make.fun/badge/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e/jinan86/solana-wallet-agent-slogan/rank.svg)](https://make.fun/c/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e)
-[![Reward](https://make.fun/badge/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e/jinan86/solana-wallet-agent-slogan/reward.svg)](https://make.fun/c/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e)
+[![Rank](https://make.fun/badge/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e/jinan86/solana-wallet-slogan/rank.svg)](https://make.fun/c/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e)
+[![Reward](https://make.fun/badge/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e/jinan86/solana-wallet-slogan/reward.svg)](https://make.fun/c/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e)
 
 Entry for the [One-Line Slogan for a Solana Wallet Agent](https://make.fun/c/u-phudinhvfx-one-line-slogan-for-a-solana-wallet-agent-a7f6564e) competition on [make.fun](https://make.fun).
 
