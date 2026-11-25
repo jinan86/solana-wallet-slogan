@@ -1,32 +1,58 @@
 #!/usr/bin/env python3
-"""Write one slogan for a Solana wallet agent to /output/entry.txt.
+"""One-line slogan for a Solana wallet agent.
 
-Deterministic, no network, reads no files outside this repository.
-The slogan is a single line: at most 20 words, at most 140 characters.
+Builds the final slogan from separate phrase parts, validates it
+internally, and writes it to /output/entry.txt with no trailing
+newline. Deterministic, no network, no file reads outside this repo.
 """
 
 import os
+import sys
 
-SLOGAN = "Your Solana wallet, run by a tireless helper that handles the details while you get on with your day."
+# The slogan, assembled from its natural phrases.
+PHRASE_PARTS = [
+    "Your Solana wallet,",
+    "run by a tireless helper",
+    "that handles the details",
+    "while you get on with your day.",
+]
+
+OUTPUT_PATH = "/output/entry.txt"
+
+# Competition limits for a one-line slogan.
+MAX_CHARS = 140
+MAX_WORDS = 20
 
 
-def main() -> None:
-    slogan = SLOGAN
+def build_slogan() -> str:
+    """Join the phrase parts into the single-line slogan."""
+    return " ".join(PHRASE_PARTS)
 
-    # Internal validation: the gate requires UTF-8 text of 1-140 chars,
-    # not only whitespace, a single line, at most 20 words, no control chars.
-    assert slogan, "slogan must not be empty"
-    assert len(slogan) <= 140, f"slogan is {len(slogan)} chars, over the 140 limit"
-    assert "\n" not in slogan and "\r" not in slogan, "slogan must be one line"
-    assert len(slogan.split()) <= 20, f"slogan is {len(slogan.split())} words, over the 20 limit"
-    assert not slogan.isspace(), "slogan must not be only whitespace"
-    assert all(ord(ch) >= 0x20 and ord(ch) != 0x7F for ch in slogan), "no control characters allowed"
-    slogan.encode("utf-8")  # must be valid UTF-8
 
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8", newline="") as f:
-        f.write(slogan)  # no trailing newline
+def validate(slogan: str) -> None:
+    """Check the slogan meets the competition's one-line rules."""
+    if not slogan:
+        raise ValueError("slogan must not be empty")
+    if len(slogan) > MAX_CHARS:
+        raise ValueError(f"slogan exceeds {MAX_CHARS} characters")
+    if "\n" in slogan or "\r" in slogan:
+        raise ValueError("slogan must be a single line")
+    if len(slogan.split()) > MAX_WORDS:
+        raise ValueError(f"slogan exceeds {MAX_WORDS} words")
+    if any(ord(ch) < 32 or ord(ch) == 127 for ch in slogan):
+        raise ValueError("slogan contains control characters")
+    slogan.encode("utf-8")  # raises if not valid UTF-8-encodable text
+
+
+def main() -> int:
+    slogan = build_slogan()
+    validate(slogan)
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "wb") as handle:
+        handle.write(slogan.encode("utf-8"))
+    print(f"Wrote {len(slogan)} characters to {OUTPUT_PATH}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
